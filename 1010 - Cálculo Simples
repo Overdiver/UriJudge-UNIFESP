@@ -1,0 +1,25 @@
+#include <stdio.h>
+ 
+int main() {
+    int i=0, j=0;
+    double tabela[2][3], total=0, a=0, b=0, auxiliar=1, valor=0;
+    
+    for(j=0; j<2; j++){
+      
+      for(i=0; i<3; i++){
+        scanf("%lf",&valor);
+        tabela[j][i] = valor;
+        
+        if(i>0){
+          auxiliar = auxiliar*valor;
+        }
+      
+      }
+      total=total+auxiliar;
+      auxiliar=1;
+      i=0;
+    }
+    
+    printf("VALOR A PAGAR: R$ %.2lf\n", total);
+    return 0;
+}
