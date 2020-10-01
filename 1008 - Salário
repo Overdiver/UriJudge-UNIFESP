@@ -1,0 +1,12 @@
+#include <stdio.h>
+ 
+int main() {
+    int id, time;
+    double value, salary;
+    scanf("%d", &id);
+    scanf("%d", &time);
+    scanf("%lf", &value);
+    salary = (double)time*value;
+    printf("NUMBER = %d\nSALARY = U$ %.2lf\n", id, salary);
+    return 0;
+}
