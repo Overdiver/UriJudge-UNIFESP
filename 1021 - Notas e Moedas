@@ -1,0 +1,47 @@
+#include <stdio.h>
+ 
+int main(){
+    float n=0, conversor[6][2];
+    int l=0, i=0, divisao=0;
+    conversor[0][0]=100.00;
+    conversor[1][0]=50.00;
+    conversor[2][0]=20.00;
+    conversor[3][0]=10.00;
+    conversor[4][0]=5.00;
+    conversor[5][0]=2.00;
+    conversor[0][1]=1.00;
+    conversor[1][1]=0.50;
+    conversor[2][1]=0.25;
+    conversor[3][1]=0.10;
+    conversor[4][1]=0.05;
+    conversor[5][1]=0.01;
+    scanf("%f", &n);
+    n=n+0.002;
+    if(n<0||n>1000000.00){
+        return 0;
+    }
+    for(l=0; l<2; l++){
+          i=0; 
+          if(l==0){
+              printf("NOTAS:\n");
+          }
+          if(l==1){
+              printf("MOEDAS:\n");
+          }
+      for(i=0; i<6; i++){
+        if(conversor[i][l]<=n){
+          divisao=n/conversor[i][l];
+          n=n-(conversor[i][l]*divisao);
+          }else{
+            divisao=0;       
+          }
+            if(l==0){
+              printf("%d nota(s) de R$ %.2f\n", divisao, conversor[i][l]);
+            }
+            if(l==1){
+              printf("%d moeda(s) de R$ %.2f\n", divisao, conversor[i][l]);
+            }
+      }
+    }
+    return 0;
+}
