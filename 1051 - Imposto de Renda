@@ -1,0 +1,31 @@
+#include <stdio.h>
+#include <string.h>
+
+int main(void) {
+  int i=0;
+  float renda=0, imposto=0; 
+  float timp[3][2];
+  timp[0][0] = 4500.00;
+  timp[1][0] = 3000.00;
+  timp[2][0] = 2000.00;
+
+  timp[0][1] = 0.28;
+  timp[1][1] = 0.18;
+  timp[2][1] = 0.08;
+  
+  scanf("%f", &renda);
+  
+  for(i=0; i<3; i++){
+    if(renda>timp[i][0]){
+      imposto = imposto + ((renda-timp[i][0])*timp[i][1]);
+      renda=timp[i][0];
+    }
+
+  }
+  if(imposto>0){
+    printf("R$ %.2f\n", imposto);
+  }else{
+    printf("Isento\n");
+  }
+  return 0;
+}
