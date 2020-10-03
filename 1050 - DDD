@@ -1,0 +1,40 @@
+#include <stdio.h>
+#include <string.h>
+#include <strings.h>
+int main(void) {
+  int i=0, read=0;
+  int ddd[8];
+  ddd[0] = 61;
+  ddd[1] = 71;
+  ddd[2] = 11;
+  ddd[3] = 21;
+  ddd[4] = 32;
+  ddd[5] = 19;
+  ddd[6] = 27;
+  ddd[7] = 31;
+  //************************
+  char cid[8][20];{
+    strcpy(cid[0], "Brasilia\n");
+    strcpy(cid[1], "Salvador\n");
+    strcpy(cid[2], "Sao Paulo\n"); 
+    strcpy(cid[3], "Rio de Janeiro\n");
+    strcpy(cid[4], "Juiz de Fora\n");
+    strcpy(cid[5], "Campinas\n");
+    strcpy(cid[6], "Vitoria\n");
+    strcpy(cid[7], "Belo Horizonte\n");
+  }
+  //***********************
+  scanf("%d", &read);
+  for(i=0; i<8; i++){
+    if(read==ddd[i]){
+      break;
+    }
+  }
+  //**************************
+  if(read==ddd[i]){
+    printf("%s", cid[i]);
+  }else{
+    printf("DDD nao cadastrado\n");
+  }
+  return 0;
+}
