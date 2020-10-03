@@ -1,0 +1,26 @@
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+  int read=0;
+  char month[13][15];   
+  strcpy(month[1], "January");
+  strcpy(month[2], "February");
+  strcpy(month[3], "March");
+  strcpy(month[4], "April");
+  strcpy(month[5], "May");
+  strcpy(month[6], "June");
+  strcpy(month[7], "July");
+  strcpy(month[8], "August");
+  strcpy(month[9], "September");
+  strcpy(month[10], "October");
+  strcpy(month[11], "November");
+  strcpy(month[12], "December");  
+  
+  scanf("%d", &read);
+  if(read<1||read>12){
+    return 0;
+  }
+  printf("%s\n", month[read]);
+  return 0;
+}
