@@ -1,0 +1,32 @@
+#include <stdio.h>
+
+int main(void){
+  int di=0, hi=0, mi=0, si=0;
+  int df=0, hf=0, mf=0, sf=0;
+  int dt=0, ht=0, mt=0, st=0;
+
+  scanf("Dia %d\n", &di);
+  scanf("%d : %d : %d\n", &hi, &mi, &si);
+  scanf("Dia %d\n", &df);
+  scanf("%d : %d : %d", &hf, &mf, &sf);
+
+  dt=df-di;
+  ht=hf-hi;
+  mt=mf-mi;
+  st=sf-si;
+  if(ht<0){//SE HORA<0, SUBTRAI 1 DO DIA P/DAR 24HS PRA HORAS
+      dt=dt-1;
+      ht=24+ht;
+    }
+    if(mt<0){//SE MIN<0, SUBTRAI 1 DA HORA P/DAR 60MINS P/ MINS
+      ht=ht-1;
+      mt=60+mt;
+    }
+    if(st<0){//SE SEG<0, SUBTRAI 1 DE MIN P/DAR 60 SEGS P/SEGS
+      mt=mt-1;
+      st=60+st;
+    }
+    printf("%d dia(s)\n%d hora(s)\n%d minuto(s)\n%d segundo(s)\n", dt, ht, mt, st);
+
+  return 0;
+}
