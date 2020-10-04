@@ -1,13 +1,12 @@
 #include <stdio.h>
 #include <string.h>
-#include <time.h>
-
+ 
 int main() {
     char nada[8];
     int i=0, j=0;
     int tempo[4][3];
     
-    //************************************
+    //*****************Armazena dias e horário do início e término do evento
     for(j=0; j<2; j++){
         if(i==0){
           scanf("%s%d", nada, &tempo[0][j]);
@@ -18,7 +17,7 @@ int main() {
           i=0;
         }    
     }
-    //**************************************
+    //******************Armazena a diferença entre os 2
     for(i=0; i<4; i++){
         tempo[i][2]=tempo[i][1]-tempo[i][0];
     }
@@ -35,13 +34,10 @@ int main() {
       tempo[2][2]=tempo[2][2]-1;
       tempo[3][2]=60+tempo[3][2];
     }
+    
+
+    
     //**************************************
-    printf("%d dias(s)\n", tempo[0][2]);
-    
-    printf("%d hora(s)\n", tempo[1][2]);
-    
-    printf("%d minuto(s)\n", tempo[2][2]);
-    
-    printf("%d segundo(s)\n", tempo[3][2]);
+    printf("%d dia(s)\n%d hora(s)\n%d minuto(s)\n%d segundo(s)\n", tempo[0][2], tempo[1][2], tempo[2][2], tempo[3][2]);
     return 0;
 }
