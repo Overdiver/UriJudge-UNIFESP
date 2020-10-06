@@ -1,0 +1,21 @@
+#include <stdio.h>
+#include <ctype.h>
+
+
+int main(void) {
+  char start='\0';
+  printf("**************SUDOKU**************\nPressione ENTER para iniciar.\n");
+  start=getchar();
+
+  if(start=='\n'){//INICIALIZAÇÃO DO SUDOKU
+    int l=0, c=0;
+    char imagem[9][9];
+    for(l=0; l<9; l++){
+      for(c=0; c<9; c++){
+        imagem[l][c]='X';
+      } 
+    }
+    int sudoku[9][9];
+    printf("%c", imagem[3][4]);
+  }
+  return 0;
