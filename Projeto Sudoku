@@ -11,7 +11,7 @@ int main(void) {
     printf("Para ganhar você precisa colocar números de 1 a 9 em cada linha, coluna e quadrado, sem repetí-los nestas 3 condições.\nO número 0 representa lugares ainda não preenchidos.\n\nPara selecionar um lugar, coloque o número da LINHA e da COLUNA no seguinte formato:\"L C\"\nExemplo:3 5\n\n");
     //****************************************************
     int sudoku[9][9][2];
-    int l=0, c=0;
+    int l=0, c=0, le=0, ce=0;//le e ce = linha e coluna de entrada
     int wincon=0;
     for(l=0; l<9; l++){
       for(c=0; c<9; c++){
@@ -20,11 +20,11 @@ int main(void) {
     }
     //****************************************************
     do{//LOOP EXECUTA ATÉ A PESSOA GANHAR
-    
+    scanf("%d %d", &le, &ce);
       for(l=0; l<9; l++){//ESTRUTURA DO JOGO
         if(l==0||l==3||l==6){
           if(l==0){
-            printf("  C 0 1 2   3 4 5   6 7 8 C \n");//PRINTA O INDICADOR DE COLUNA
+            printf("\n  C 0 1 2   3 4 5   6 7 8 C \n");//PRINTA O INDICADOR DE COLUNA
             printf("L   - - -   - - -   - - -   L\n");
           }else{
           printf("    - - -   - - -   - - -   \n");
@@ -43,7 +43,7 @@ int main(void) {
         }
         if(l==8){
           printf("L   - - -   - - -   - - -   L\n");
-          printf("  C 0 1 2   3 4 5   6 7 8 C \n");//PRINTA O INDICADOR DE COLUNA
+          printf("  C 0 1 2   3 4 5   6 7 8 C \n\n*************************************\n\n");//PRINTA O INDICADOR DE COLUNA E SEPARAR A NOVA MATRIZ DA ANTIGA
         }
       }
     }while(wincon==0);
