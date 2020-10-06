@@ -8,37 +8,45 @@ int main(void) {
   start=getchar();
   //****************************************************
   if(start=='\n'){//INICIALIZAÇÃO DO SUDOKU
-    printf("Para ganhar você precisa colocar números de 1 a 9 em cada linha, coluna e quadrado, sem repetí-los nestas 3 condições.\nO número 0 representa lugares ainda não preenchidos.\nPara selecionar um lugar, coloque o número da LINHA e da COLUNA no seguinte formato: \"L C\"\n\n");
+    printf("Para ganhar você precisa colocar números de 1 a 9 em cada linha, coluna e quadrado, sem repetí-los nestas 3 condições.\nO número 0 representa lugares ainda não preenchidos.\n\nPara selecionar um lugar, coloque o número da LINHA e da COLUNA no seguinte formato:\"L C\"\nExemplo:3 5\n\n");
     //****************************************************
-    int sudoku[9][9];
+    int sudoku[9][9][2];
     int l=0, c=0;
-    //****************************************************
+    int wincon=0;
     for(l=0; l<9; l++){
-      if(l==0||l==3||l==6){
-        if(l==0){
-          printf("  C 0 1 2   3 4 5   6 7 8 C \n");
-          printf("L   - - -   - - -   - - -   L\n");
-        }else{
-        printf("    - - -   - - -   - - -   \n");
-        }
-      }
       for(c=0; c<9; c++){
-        sudoku[l][c]=0;
-        if(c==0||c==3||c==6){
-          if(c==0){printf("%d", l);
-          }
-          printf(" |");
-        }
-        printf(" %d", sudoku[l][c]);
-        if(c==8){printf(" | %d\n", l);
-        }
-      }
-      if(l==8){
-        printf("L   - - -   - - -   - - -   L\n");
-        printf("  C 0 1 2   3 4 5   6 7 8 C \n");
+        sudoku[l][c][1]=0;
       }
     }
-
+    //****************************************************
+    do{//LOOP EXECUTA ATÉ A PESSOA GANHAR
+    
+      for(l=0; l<9; l++){//ESTRUTURA DO JOGO
+        if(l==0||l==3||l==6){
+          if(l==0){
+            printf("  C 0 1 2   3 4 5   6 7 8 C \n");//PRINTA O INDICADOR DE COLUNA
+            printf("L   - - -   - - -   - - -   L\n");
+          }else{
+          printf("    - - -   - - -   - - -   \n");
+          }
+        }
+        for(c=0; c<9; c++){
+          if(c==0||c==3||c==6){
+            if(c==0){//PRINTA O INDICADOR DE LINHA
+              printf("%d", l);
+            }
+            printf(" |");
+          }
+          printf(" %d", sudoku[l][c][1]);//PRINTA OS VALORES IMBUTIDOS EM CADA PARTE DA MATRIZ
+          if(c==8){printf(" | %d\n", l);
+          }
+        }
+        if(l==8){
+          printf("L   - - -   - - -   - - -   L\n");
+          printf("  C 0 1 2   3 4 5   6 7 8 C \n");//PRINTA O INDICADOR DE COLUNA
+        }
+      }
+    }while(wincon==0);
   }
 
   return 0;
