@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <ctype.h>
-
+#include <stdlib.h>
 
 int main(void) {
   char start='\0';
@@ -10,51 +10,70 @@ int main(void) {
   if(start=='\n'){//INICIALIZAÇÃO DO SUDOKU
     printf("Para ganhar você precisa colocar números de 1 a 9 em cada linha, coluna e quadrado, sem repetir em nenhum.\nO número 0 representa lugares ainda não preenchidos.\n\n");
     //****************************************************
-    int sudoku[9][9][2];
-    int l=0, c=0, le=0, ce=0, val=0;//le e ce = linha e coluna de entrada
+    int sudoku[10][10][2];
+    int l=1, c=1, le=0, ce=0, val=0;//le e ce = linha e coluna de entrada
     int wincon=0;
-    for(l=0; l<9; l++){
-      for(c=0; c<9; c++){
+    for(l=1; l<10; l++){
+      for(c=1; c<10; c++){
         sudoku[l][c][1]=0;
       }
     }
     //****************************************************
     do{//LOOP EXECUTA ATÉ A PESSOA GANHAR
     
-      for(l=0; l<9; l++){//ESTRUTURA DO JOGO
-        if(l==0||l==3||l==6){//PRINTA O INDICADOR DE COLUNA E AS GRADES
-          if(l==0){
-            printf("\n  C 0 1 2   3 4 5   6 7 8 C \n");
+      for(l=1; l<10; l++){//ESTRUTURA DO JOGO
+        if(l==1||l==4||l==7){//PRINTA O INDICADOR DE COLUNA E AS GRADES
+          if(l==1){
+            printf("\n  C 1 2 3   4 5 6   7 8 9 C \n");
             printf("L   - - -   - - -   - - -   L\n");
           }else{
           printf("    - - -   - - -   - - -   \n");
           }
         }
 
-        for(c=0; c<9; c++){//PRINTA O INDICADOR DE LINHA E AS GRADES
-          if(c==0||c==3||c==6){
-            if(c==0){
+        for(c=1; c<10; c++){//PRINTA O INDICADOR DE LINHA E AS GRADES
+          if(c==1||c==4||c==7){
+            if(c==1){
               printf("%d", l);
             }
             printf(" |");
           }
           printf(" %d", sudoku[l][c][1]);//PRINTA OS VALORES IMBUTIDOS EM CADA PARTE DA MATRIZ
-          if(c==8){printf(" | %d\n", l);
+          if(c==9){printf(" | %d\n", l);
           }
         }
 
-        if(l==8){//PRINTA A GRADE FINAL E INDICADOR DE COLUNA
+        if(l==9){//PRINTA A GRADE FINAL E INDICADOR DE COLUNA
           printf("L   - - -   - - -   - - -   L\n");
-          printf("  C 0 1 2   3 4 5   6 7 8 C \n\n*************************************\n\n");//PRINTA O INDICADOR DE COLUNA E SEPARAR A NOVA MATRIZ DA ANTIGA
+          printf("  C 1 2 3   4 5 6   7 8 9 C \n\n*************************************\n\n");//PRINTA O INDICADOR DE COLUNA E SEPARAR A NOVA MATRIZ DA ANTIGA
         }
       }
       
       if(wincon!=3){//PRINTA E LÊ VALORES CASO O JOGADOR NÃO TENHA GANHADO
-        printf("Para selecionar um lugar, coloque o número da LINHA e da COLUNA no seguinte formato:\"L C\" || Exemplo:3 5\n");
-        scanf("%d %d", &le, &ce);//LEITURA DAS POSIÇÕES NA MATRIZ
-        printf("\nInsira um número de 1 a 9:\n");
-        scanf("%d", &val);//LÊ A VARIÁVEL A SER COLOCADA NA MATRIZ
+          do{//REPETE O LOOP ATÉ SER COLOCADO UM VALOR NUMERICO ACEITAVEL
+            printf("Para selecionar um lugar, coloque o número da LINHA e da COLUNA no seguinte formato:\"L C\" || Exemplo:3 5\n");
+            scanf("%d %d", &le, &ce);//LEITURA DAS POSIÇÕES NA MATRIZ
+            printf("Insira um número de 1 a 9:\n");
+            scanf("%d", &val);//LÊ A VARIÁVEL A SER COLOCADA NA MATRIZ
+         
+          }while((le>0&&le<10&&ce>0&&ce<10&&val>0&&val<10)!=1);
+          
         sudoku[le][ce][1]=val;
+        //***********VERIFICADORES****************
+        for(l=1; l<10; l++){//VERIFICA LINHAS E COLUNAS
+          for(c=1; l<10; l++){
+            if(sudoku[l][c][1]!=0){
+              if(val==sudoku[l][c][1]){
+                
+              }
+            }
+          }
+        }
+
+
+
+
+
 
       }
 
