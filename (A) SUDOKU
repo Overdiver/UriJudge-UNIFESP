@@ -11,7 +11,8 @@ int main(void) {
     printf("Para ganhar você precisa colocar números de 1 a 9 em cada linha, coluna e quadrado, sem repetir em nenhum.\nO número 0 representa lugares ainda não preenchidos.\n\n");
     //****************************************************
     int sudoku[10][10][2];
-    int l=1, c=1, le=0, ce=0, val=0;//le e ce = linha e coluna de entrada
+    int l=1, c=1, le=0, ce=0, val=0, ver=0, verc=0,
+    verl=0, verq=0;//le e ce = linha e coluna de entrada
     int wincon=0;
     for(l=1; l<10; l++){
       for(c=1; c<10; c++){
@@ -51,24 +52,35 @@ int main(void) {
       
       if(wincon!=3){//PRINTA E LÊ VALORES CASO O JOGADOR NÃO TENHA GANHADO
           do{//REPETE O LOOP ATÉ SER COLOCADO UM VALOR NUMERICO ACEITAVEL
-            printf("Para selecionar um lugar, coloque o número da LINHA e da COLUNA no seguinte formato:\"L C\" || Exemplo:3 5\n");
+            if(ver==0){
+              printf("Para selecionar um lugar, coloque o número da LINHA e da COLUNA no seguinte formato:\"L C\" || Exemplo:3 5\n");
+            }else{
+              printf("Foi colocado um valor repetido. Favor escolher outro número.\n");
+            }
+            
             scanf("%d %d", &le, &ce);//LEITURA DAS POSIÇÕES NA MATRIZ
-            printf("Insira um número de 1 a 9:\n");
+            printf("Atribua um valor de 0 a 9 ao local:\n");
             scanf("%d", &val);//LÊ A VARIÁVEL A SER COLOCADA NA MATRIZ
-         
-          }while((le>0&&le<10&&ce>0&&ce<10&&val>0&&val<10)!=1);
-          
-        sudoku[le][ce][1]=val;
-        //***********VERIFICADORES****************
-        for(l=1; l<10; l++){//VERIFICA LINHAS E COLUNAS
-          for(c=1; l<10; l++){
-            if(sudoku[l][c][1]!=0){
-              if(val==sudoku[l][c][1]){
-                
+
+            //***********VERIFICADORES****************
+            ver=0, verl=0, verc=0, verq=0;
+            for(l=1; l<10; l++){
+              if(val==sudoku[l][ce][1]){
+                ver=1;
               }
             }
-          }
-        }
+            for(c=1; c<10; c++){
+              if(val==sudoku[le][c][1]){
+                ver=;
+              }
+            }
+
+            
+         
+          }while((le>0&&le<10&&ce>0&&ce<10&&val<10)!=1&&ver!=0);
+          
+        sudoku[le][ce][1]=val;
+
 
 
 
