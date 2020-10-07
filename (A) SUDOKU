@@ -1,3 +1,4 @@
+  
 #include <stdio.h>
 #include <ctype.h>
 #include <stdlib.h>
@@ -12,7 +13,7 @@ int main(void) {
     //****************************************************
     int sudoku[10][10][2];
     int l=1, c=1, le=0, ce=0, val=0, ver=0, verc=0,
-    verl=0, verq=0;//le e ce = linha e coluna de entrada
+    verl=0, verq=0, scanqli=0, scanqlf=0, scanqci=0, scanqcf=0;//le e ce = linha e coluna de entrada
     int wincon=0;
     for(l=1; l<10; l++){
       for(c=1; c<10; c++){
@@ -43,13 +44,13 @@ int main(void) {
           if(c==9){printf(" | %d\n", l);
           }
         }
-
+        
         if(l==9){//PRINTA A GRADE FINAL E INDICADOR DE COLUNA
           printf("L   - - -   - - -   - - -   L\n");
           printf("  C 1 2 3   4 5 6   7 8 9 C \n\n*************************************\n\n");//PRINTA O INDICADOR DE COLUNA E SEPARAR A NOVA MATRIZ DA ANTIGA
         }
       }
-      
+      //******************************************************************
       if(wincon!=3){//PRINTA E LÊ VALORES CASO O JOGADOR NÃO TENHA GANHADO
           do{//REPETE O LOOP ATÉ SER COLOCADO UM VALOR NUMERICO ACEITAVEL
             if(ver==0){
@@ -60,24 +61,69 @@ int main(void) {
             
             scanf("%d %d", &le, &ce);//LEITURA DAS POSIÇÕES NA MATRIZ
             printf("Atribua um valor de 0 a 9 ao local:\n");
-            scanf("%d", &val);//LÊ A VARIÁVEL A SER COLOCADA NA MATRIZ
+            scanf("%d", &val);//LEITURA DA VARIÁVEL A SER COLOCADA NA MATRIZ
 
             //***********VERIFICADORES****************
             ver=0, verl=0, verc=0, verq=0;
-            for(l=1; l<10; l++){
-              if(val==sudoku[l][ce][1]){
-                ver=1;
-              }
+            for(l=1; l<10; l++){//VERIFICA SE HÁ REPETIÇÃO NA COLUNA EM RELAÇÃO AO VALOR COLOCADO
+              if(l==le){
+              }else{
+                if(val==sudoku[l][ce][1]){
+                  verl=1;
+                }
+              }  
             }
-            for(c=1; c<10; c++){
-              if(val==sudoku[le][c][1]){
-                ver=;
-              }
+            //*****************************************
+            for(c=1; c<10; c++){//VERIFICA SE HÁ REPETIÇÃO NA LINHA EM RELAÇÃO AO VALOR COLOCADO
+              if(c==ce){
+              }else{
+                if(val==sudoku[le][c][1]){
+                verc=1;
+                }
+              }   
             }
+            //*****************************************
+            if(le>0 && le<10 && ce>0 && ce<10 && val<10){//VERIFICA SE A POSIÇÃO E VALOR SÃO VÁLIDOS ANTES DE FAZER COMPARAÇÃO DOS QUADRADOS E DETERMINA QUAL QUADRADO A SER ANALISADO
+              if(le>=1||le<=3){
+                scanqli=1;
+                scanqlf=3;
+              }
+              if(le>=4||le<=6){
+                scanqli=1;
+                scanqlf=3;
+              }
+              if(le>=7||le<=9){
+                scanqli=1;
+                scanqlf=3;
+              }
+              if(ce>=1||ce<=3){
+                scanqci=1;
+                scanqcf=3;
+              }
+              if(ce>=4||ce<=6){
+                scanqci=4;
+                scanqcf=6;
+              }
+              if(ce>=7||ce<=9){
+                scanqci=7;
+                scanqcf=9;
+              }
 
-            
-         
-          }while((le>0&&le<10&&ce>0&&ce<10&&val<10)!=1&&ver!=0);
+            }
+            //*****************************************
+            for(l=scanqli; l==scanqlf; l++){//VERIFICA SE HÁ REPETIÇÃO NO QUADRADO EM RELAÇÃO A POSIÇÃO
+              for(c=scanqci; c==scanqcf; c++){
+                if(l==le && c==ce){
+
+                }else{
+                  if(val==sudoku[l][c][1]){
+                    verq=1;
+                  }
+                }
+              }
+            }
+            //*****************************************
+          }while((le>0 && le<10 && ce>0 && ce<10 && val<10)!=1 && ver!=0);
           
         sudoku[le][ce][1]=val;
 
