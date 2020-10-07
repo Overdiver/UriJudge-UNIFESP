@@ -30,6 +30,7 @@ int main(void) {
           printf("    - - -   - - -   - - -   \n");
           }
         }
+
         for(c=0; c<9; c++){//PRINTA O INDICADOR DE LINHA E AS GRADES
           if(c==0||c==3||c==6){
             if(c==0){
@@ -41,20 +42,33 @@ int main(void) {
           if(c==8){printf(" | %d\n", l);
           }
         }
+
         if(l==8){//PRINTA A GRADE FINAL E INDICADOR DE COLUNA
           printf("L   - - -   - - -   - - -   L\n");
           printf("  C 0 1 2   3 4 5   6 7 8 C \n\n*************************************\n\n");//PRINTA O INDICADOR DE COLUNA E SEPARAR A NOVA MATRIZ DA ANTIGA
         }
       }
       
-      if(wincon!=3){//PRINTA E LÊ CASO O JOGADOR NÃO TENHA GANHADO
+      if(wincon!=3){//PRINTA E LÊ VALORES CASO O JOGADOR NÃO TENHA GANHADO
         printf("Para selecionar um lugar, coloque o número da LINHA e da COLUNA no seguinte formato:\"L C\" || Exemplo:3 5\n");
         scanf("%d %d", &le, &ce);//LEITURA DAS POSIÇÕES NA MATRIZ
         printf("\nInsira um número de 1 a 9:\n");
         scanf("%d", &val);//LÊ A VARIÁVEL A SER COLOCADA NA MATRIZ
+        sudoku[le][ce][1]=val;
+
+      }
+
+      if(wincon==3){//DECIDE SE O JOGO TERMINA OU REINICIA  COM BASE NA RESPOSTA DO JOGADOR
+        printf("//////////VOCÊ VENCEU!!//////////\n\nPressione ENTER para recomeçar.\n");
+        start=getchar();
+        if(start=='\n'){
+          return main();
+        }
+
       }
     }while(wincon!=3);
   }
+  printf("FIM DE JOGO.\n");
 
   return 0;
 }
