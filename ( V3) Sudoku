@@ -8,11 +8,11 @@ int main(void) {
   start=getchar();
   //********************************************************************************************************
   if(start=='\n'){//INICIALIZAÇÃO DO SUDOKU
-    printf("Para ganhar você precisa colocar números de 1 a 9 em cada linha, coluna e quadrado, sem repetir em nenhum.\nO número 0 representa lugares ainda não preenchidos.\n\n");
+    printf("Para ganhar você precisa colocar números de 1 a 9 em cada linha,\ncoluna e quadrado, sem repetir em nenhum.\nO número 0 representa lugares ainda não preenchidos.\n\n");
     //********************************************************************************************************
     int sudoku[10][10][2];
     int l=1, c=1, le=0, ce=0, val=0, ver=0, verc=0, vert=0,
-    verl=0, verq=0, scanqli=0, scanqlf=0, scanqci=0, scanqcf=0, meml=0, memc=0;
+    verl=0, verq=0, meml=0, memc=0, ult=0;
     //le e ce = linha e coluna de entrada
     int counter=0, xcounter=0, ant=1, teste2=1;
     int wincon=0;
@@ -24,96 +24,9 @@ int main(void) {
     //********************************************************************************************************
     do{//LOOP EXECUTA ATÉ A PESSOA GANHAR
       //********************************************************************************************************
-      //***********VERIFICADORES****************
-
-        //*****************************************
-        for(vert=1; vert<9; vert++){//*********VERIFICADOR DE LINHAS************
-          counter=0;
-          for(l=1; l<10; l++){
-            for(c=vert+1; c<10; c++){
-              xcounter=0;
-                if(sudoku[l][vert][1]!=0){
-                  for(ant=vert-1; ant>1; ant--){
-                    if(sudoku[l][vert][1]==sudoku[l][ant][1]){
-                      xcounter=1;
-                    }
-                  }
-                    if(xcounter==0){
-                      if(sudoku[l][vert][1]==sudoku[l][c][1]){
-                        if(counter>0){
-                          printf("L%d-C%d\n",l, c);
-                        }else{
-                          printf("O valor %d se repete em:\nL%d-C%d\nL%d-C%d\n", sudoku[l][vert][1], l, vert, l, c);
-                          counter = 1;
-                        }
-                        
-                      }
-                    }
-                }
-            }
-          }
-          counter=0;
-            //*********VERIFICADOR DE COLUNAS************
-            for(c=1; c<10; c++){
-              for(l=vert+1; l<10; l++){
-                xcounter=0;
-                if(sudoku[vert][c][1]!=0){
-                  for(ant=vert-1; ant>1; ant--){
-                    if(sudoku[vert][c][1]==sudoku[ant][c][1]){
-                      xcounter=1;
-                    }
-                  }
-                  if(sudoku[vert][c][1]==sudoku[l][c][1]){
-                    if(counter>0){
-                      printf("L%d-C%d\n",l, c);
-                    }else{
-                      printf("O valor %d se repete em:\nL%d-C%d\nL%d-C%d\n", sudoku[vert][c][1], vert, c, l, c);
-                      counter = 1;
-                    }
-                  }
-                }
-              }
-            }
-        }
       
-        //********************************************************************************************************
-          if(le>0&&le<4){
-            scanqli=1;
-            scanqlf=3;
-          }
-          if(le>3&&le<7){
-            scanqli=4;
-            scanqlf=6;
-          }
-          if(le>6&&le<10){
-            scanqli=7;
-            scanqlf=9;
-          }
-          if(ce>0&&ce<4){
-            scanqci=1;
-            scanqcf=3;
-          }
-          if(ce>3&&ce<7){
-            scanqci=4;
-            scanqcf=6;
-          }
-          if(ce>6&&ce<10){
-            scanqci=7;
-            scanqcf=9;
-          }
-          for(l=scanqli; l<scanqlf+1; l++){//VERIFICA SE HÁ REPETIÇÃO NO QUADRADO EM RELAÇÃO A POSIÇÃO
-            for(c=scanqci; c<scanqcf+1; c++){
-              if(l==le && c==ce){
-              }else{
-                if(val==sudoku[l][c][1]){
-                  verq=val;
-                  meml=l;
-                  memc=c;
-                }
-              }
-            }
-          }   
-          //********************************************************************************************************
+      
+        
           ver = verq + verl + verc;
         
         //*********************************************
@@ -148,14 +61,103 @@ int main(void) {
               }
             }
             
-            printf("Para selecionar um lugar, coloque o número da LINHA e da COLUNA no seguinte formato:\"L C\". Exemplo:3 5\n");
+                      //***********VERIFICADORES****************
+
+        //*****************************************
+        for(vert=1; vert<9; vert++){//*********VERIFICADOR DE LINHAS************
+            counter=0;
+            for(l=1; l<10; l++){
+              for(c=vert+1; c<10; c++){
+                xcounter=0;
+                  if(sudoku[l][vert][1]!=0){
+                    for(ant=vert-1; ant>0; ant--){
+                      if(sudoku[l][vert][1]==sudoku[l][ant][1]){
+                        xcounter=1;
+                      }
+                    }
+                      if(xcounter==0){
+                        if(sudoku[l][vert][1]==sudoku[l][c][1]){
+                          if(counter>0){
+                            printf("L%d-C%d\n",l, c);
+                          }else{
+                            printf("O valor %d se repete em:\nL%d-C%d\nL%d-C%d\n", sudoku[l][vert][1], l, vert, l, c);
+                            counter = 1;
+                          }
+                          
+                        }
+                      }
+                  }
+              }
+            }
+            counter=0;
+              //*********VERIFICADOR DE COLUNAS************
+              for(c=1; c<10; c++){
+                for(l=vert+1; l<10; l++){
+                  xcounter=0;
+                  if(sudoku[vert][c][1]!=0){
+                    for(ant=vert-1; ant>0; ant--){
+                      if(sudoku[vert][c][1]==sudoku[ant][c][1]){
+                        xcounter=1;
+                      }
+                    }
+                    if(xcounter==0){
+                      if(sudoku[vert][c][1]==sudoku[l][c][1]){
+                        if(counter>0){
+                          printf("L%d-C%d\n",l, c);
+                        }else{
+                          printf("O valor %d se repete em:\nL%d-C%d\nL%d-C%d\n", sudoku[vert][c][1], vert, c, l, c);
+                          counter = 1;
+                        }
+                      }
+                    }
+                      
+                  }
+                }
+              }
+            }
+            vert=1;
+            int xvert=1, scanqli=1, scanqlf=4, scanqci=1, scanqcf=4, reverse=8;
+            //**************************************************************************************VERIFICADOR DE QUADRADOS
+              for(xvert=1; xvert<10; xvert++){
+                ult=1;//COLUNA
+                vert=1;//LINHA
+                for(reverse=8; reverse>0; reverse--){//QNT VEZES SCAN QUADRAD
+                  counter=0;
+                  for(l=scanqli; l<scanqlf; l++){
+                    
+                    for(c=scanqci; c<scanqcf; c++){
+
+                      if(sudoku[vert][ult]>0){
+                        if(sudoku[vert][ult]==sudoku[l][c]){
+                          if(counter==0){
+                          printf("Há repetição de valor(es) no quadrado: %d.\n", xvert);
+                          counter=1;
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+               
+                
+
+
+                if(xvert==3||xvert==6){
+                  scanqci=1;
+                  scanqcf=4;
+                }else{
+                  scanqci=scanqci+3;
+                  scanqcf=scanqcf+3;
+                }
+              }
+           
+          //********************************************************************************************************
+        
+
+            //************************************************************
+            printf("Para selecionar um lugar, coloque o número da LINHA e da COLUNA\nno seguinte formato:\"L C\". Exemplo:3 5\n");
             
-            if(verc!=0){
-              printf("**Em L-%d C-%d foi colocado um valor igual a L-%d C-%d.**\n", le, ce, meml, verc);
-            }
-            if(verl!=0){
-              printf("**Em L-%d C-%d foi colocado um valor igual a L-%d C-%d.**\n", le, ce, verl, memc);
-            }
+            
             if(verq!=0){
               printf("**No quadrado de L-%d C-%d há repetição de valores.**\n", le, ce);
             }
@@ -170,6 +172,8 @@ int main(void) {
           }while((le>0 && le<10 && ce>0 && ce<10 && val<10)==0);
           
         sudoku[le][ce][1]=val;
+
+
 
       }
       //********************************************************************************************************
