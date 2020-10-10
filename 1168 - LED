@@ -1,0 +1,49 @@
+#include <stdio.h>
+#include <string.h>
+int main(void){
+  int i=0, l=0, n=0, count=0;
+
+  scanf("%d", &n);
+  int ledn[n];
+
+
+  for(i=0; i<n; i++){
+  char leds[1000];
+    if(i<n-1){
+      scanf("%s\n", leds);
+      strcat(leds, "\0");
+    }else{
+      scanf("%s", leds);
+      strcat(leds, "\0");
+    }
+
+    for(l=0; leds[l]!='\0'; l++){
+        if(leds[l]=='1'){
+        count=count+2;
+        }
+        if(leds[l]=='2'||leds[l]=='3'||leds[l]=='5'){
+          count=count+5;
+        }
+        if(leds[l]=='4'){
+          count=count+4;
+        }
+        if(leds[l]=='6'||leds[l]=='9'||leds[l]=='0'){
+          count=count+6;
+        }
+        if(leds[l]=='7'){
+          count=count+3;
+        }
+        if(leds[l]=='8'){
+          count=count+7;
+        }
+      
+    }
+
+    ledn[i]=count;
+    count=0;
+  }
+  for(i=0; i<n; i++){
+    printf("%d leds\n", ledn[i]);
+  }
+ return 0;
+}
