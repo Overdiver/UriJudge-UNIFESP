@@ -3,11 +3,11 @@
 int main() {
  
     int sudoku[9][9];
-    int n=0, i=0, c=0, l=0, inst=0, count=0, ce=0, le=0, quad=1;
+    int n=0, i=0, c=0, l=0, count=0, ce=0, le=0, quad=1;
     
     scanf("%d", &n);
     for(i=0; i<n; i++){//LÊ N MATRIZES
-
+    count=0;
         for(i=0;i<9;i++){//ENTRADA DE VALORES
             if(i<8){
                scanf("%d %d %d %d %d %d %d %d %d\n", &sudoku[i][0], &sudoku[i][1], &sudoku[i][2], &sudoku[i][3], &sudoku[i][4], &sudoku[i][5], &sudoku[i][6], &sudoku[i][7], &sudoku[i][8]); 
@@ -57,27 +57,19 @@ int main() {
                 if(ce==limitelf-1){
                   auxcol=0;
                 }
-                for(c=auxcol+1; c<limitecf; c++){//VERIFIC COL
-                  if()
+                for(c=auxcol+1; c<limitecf; c++){//VERIFIC COLUNA
+                  if(sudoku[le][ce]==sudoku[l][c]){//COMPARAÇÃO ENTRE ELEMENTOS DO QUADRADO
+                    count=1;
+                  }
                 }
               }
             }
           }
-            
-              
-
-
         }//FIM VERIF QUAD
-        
 
-
-
-        
-        
-        
         //FIM DA MATRIZ
-        printf("Instancia %d\n", inst);
-        if(inst==1){
+        printf("Instancia %d\n", i);
+        if(count==0){
             printf("SIM\n\n");
         }else{
             printf("NAO\n\n");
