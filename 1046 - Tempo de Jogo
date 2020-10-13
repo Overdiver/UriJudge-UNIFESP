@@ -1,0 +1,19 @@
+#include <stdio.h>
+ 
+int main() {
+ 
+    int hi=0, hf=0, soma=0;
+    scanf("%d %d", &hi, &hf);
+    soma=hf-hi;
+    
+    if(soma<0){
+        soma=24+soma;
+    }
+    if(soma==0){
+        soma=24;
+    }
+    printf("O JOGO DUROU %d HORA(S)\n", soma);
+    
+    
+    return 0;
+}
