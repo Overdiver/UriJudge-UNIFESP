@@ -1,0 +1,33 @@
+#include <stdio.h>
+#include <math.h>
+int main() {
+ 
+    int n=0, i=0, cedula=0;
+    int s1[7];
+    s1[0]=100; s1[1]=50;
+    s1[2]=20; s1[3]=10;
+    s1[4]=5; s1[5]=2;
+    s1[6]=1;
+    
+    
+    scanf("%d", &n);
+    if(n>0&&n<1000000){
+        printf("%d\n", n);
+        for(i=0; i<7; i++){
+          cedula=0;
+            if(n>=s1[i]){
+                if((double)n/s1[i]<=1){
+                  cedula=round(n/s1[i]);
+                }else{
+                  cedula=n/s1[i];
+                }
+                n=round(n-(cedula*s1[i]));
+                
+            }
+            printf("%d nota(s) de R$ %d,00\n", cedula, s1[i]);
+        }
+    }
+    
+ 
+    return 0;
+}
