@@ -1,0 +1,17 @@
+#include <stdio.h>
+ 
+int main() {
+    int n=0, m=0;
+    double s1[6];
+    double t=0;
+    s1[1]=4.00; 
+    s1[2]=4.50;
+    s1[3]=5.00; 
+    s1[4]=2.00;
+    s1[5]=1.50;
+    
+    scanf("%d %d", &n, &m);
+    t=s1[n]*m;
+    printf("Total: R$ %.2lf\n", t);
+    return 0;
+}
