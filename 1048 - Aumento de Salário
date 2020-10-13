@@ -1,0 +1,26 @@
+#include <stdio.h>
+ 
+int main() {
+ 
+    float sal=0, ganho=0, per=0; 
+    scanf("%f", &sal);
+    
+    if(sal>=0&&sal<=400.00){
+        per=1.15;
+    }
+    if(sal>=400.01&&sal<=800.00){
+        per=1.12;
+    }
+    if(sal>=800.01&&sal<=1200.00){
+        per=1.10;
+    }
+    if(sal>=1200.01&&sal<=2000.00){
+        per=1.07;
+    }
+    if(sal>2000.00){
+        per=1.04;
+    }
+    printf("Novo salario: %.2f\nReajuste ganho: %.2f\nEm percentual: %.0f %%\n", (sal*per), ((sal*per)-sal), ((per*100)-100));
+ 
+    return 0;
+}
