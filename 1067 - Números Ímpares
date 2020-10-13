@@ -1,0 +1,14 @@
+#include <stdio.h>
+ 
+int main() {
+ 
+    int x=0, a=0;
+    scanf("%d", &x);
+    for(a=1; a<=x; a++){
+        if(a%2!=0){
+            printf("%d\n", a);
+        }
+    }
+ 
+    return 0;
+}
