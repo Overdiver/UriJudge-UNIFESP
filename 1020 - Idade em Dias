@@ -1,0 +1,39 @@
+#include <stdio.h>
+#include <string.h>
+#include <math.h>
+int main() {
+ 
+    int i=0, n=0;
+    int s1[3]; s1[0]=365; s1[1]=30; s1[2]=1;
+    char s2[7][3]; 
+    strcpy(s2[0], "ano(s)"); strcpy(s2[1], "mes(es)");
+    strcpy(s2[2], "dia(s)");
+    scanf("%d", &n);
+    
+    for(i=0; i<3; i++){
+        int dias=0;
+        if(n>=s1[i]){
+            if(n/s1[i]<=1){
+                dias=round(n/s1[i]);
+            }else{
+                dias=n/s1[i];
+            }
+        }
+        n=round(n-(dias*s1[i]));
+        printf("%d ", dias);
+        if(i==0){
+          printf("ano(s)\n");
+        }
+        if(i==1){
+          printf("mes(es)\n");
+        }
+        if(i==2){
+          printf("dia(s)\n");
+        }
+
+        
+        
+    }
+ 
+    return 0;
+}
