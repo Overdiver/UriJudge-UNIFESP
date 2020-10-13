@@ -1,0 +1,10 @@
+#include <stdio.h>
+ 
+int main() {
+    
+    double x=60.0, y=90.0, km=0;
+    scanf("%d", &km);
+    printf("%d minutos\n", 60*(km/(y-x)));
+    
+    return 0;
+}
