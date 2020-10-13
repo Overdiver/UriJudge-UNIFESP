@@ -1,0 +1,25 @@
+#include <stdio.h>
+ 
+int main() {
+ 
+    int hi=0, hf=0, mi=0, mf=0, somah=0, somam=0;
+    scanf("%d %d %d %d", &hi, &mi, &hf, &mf);
+    somah=hf-hi;
+    somam=mf-mi;
+    
+    if(somam<=0&&somah<=0){
+        somah=24+somah;
+        
+    }else{
+        if(somah==0){
+        somah=0;
+    }
+    
+    }
+    if(somam<0){
+        somah=somah-1;
+        somam=60+somam;
+    }
+    printf("O JOGO DUROU %d HORA(S) E %d MINUTO(S)\n", somah, somam);
+    return 0;
+}
