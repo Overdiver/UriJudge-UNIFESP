@@ -3,7 +3,7 @@
 int main() {
  
     int sudoku[9][9];
-    int n=0, i=0, c=0, l=0, inst=0, count=0, ce=0, le=0;
+    int n=0, i=0, c=0, l=0, inst=0, count=0, ce=0, le=0, quad=1;
     
     scanf("%d", &n);
     for(i=0; i<n; i++){//LÊ N MATRIZES
@@ -37,15 +37,38 @@ int main() {
           }
         }//FIM VERIF COLUN
 
+        for(quad=1; quad<10; quad++){//VERIF 9 QUADRADOS 3X3 
+         int limiteli=0, limitelf=3, limiteci=0, limitecf=3, auxcol=0;//DEFININDO O LIMITE DE CADA QUADRADO
+          if(quad==4||quad==7){
+            limiteci=0;
+            limitecf=3;
+            limiteli=limiteli+3;
+            limitelf=limitelf+3;
+          }else{
+            limiteci=limiteci+3;
+            limitecf=limitecf+3;
+          }
+
+          //PARTE DELICADA
+          for(le=limiteli; le<limitelf; le++){//ELEMENTO L
+            for(ce=limiteci; ce<limitecf; ce++){//ELEMENTO C
+              auxcol=ce;
+              for(l=limiteli; l<limitelf; l++){//VERF LINHA
+                if(ce==limitelf-1){
+                  auxcol=0;
+                }
+                for(c=auxcol+1; c<limitecf; c++){//VERIFIC COL
+                  if()
+                }
+              }
+            }
+          }
+            
+              
 
 
-
-
-
-
-
-
-
+        }//FIM VERIF QUAD
+        
 
 
 
