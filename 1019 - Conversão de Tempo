@@ -1,0 +1,27 @@
+#include <stdio.h>
+#include <math.h>
+int main() {
+
+    int n=0, t=0, i=0;
+    int s1[3]; s1[0]=3600; s1[1]=60; s1[2]=1;
+    
+    scanf("%d", &n);
+    
+    for(i=0; i<3; i++){
+        t=0;
+        if(n>=s1[i]){
+            t=n/s1[i];
+            n=round(n-(t*s1[i]));
+        }
+        
+        
+        if(i<2){
+            printf("%d:", t);
+        }else{
+            printf("%d\n", t);
+        }
+    }
+    
+
+    return 0;
+}
