@@ -1,0 +1,65 @@
+#include <stdio.h>
+ 
+int main() {
+ 
+    int sudoku[9][9];
+    int n=0, i=0, c=0, l=0, inst=0, count=0, ce=0, le=0;
+    
+    scanf("%d", &n);
+    for(i=0; i<n; i++){//LÊ N MATRIZES
+
+        for(i=0;i<9;i++){//ENTRADA DE VALORES
+            if(i<8){
+               scanf("%d %d %d %d %d %d %d %d %d\n", &sudoku[i][0], &sudoku[i][1], &sudoku[i][2], &sudoku[i][3], &sudoku[i][4], &sudoku[i][5], &sudoku[i][6], &sudoku[i][7], &sudoku[i][8]); 
+            }else{
+                scanf("%d %d %d %d %d %d %d %d %d", &sudoku[i][0], &sudoku[i][1], &sudoku[i][2], &sudoku[i][3], &sudoku[i][4], &sudoku[i][5], &sudoku[i][6], &sudoku[i][7], &sudoku[i][8]);
+            }
+        }//FIM DA ENTRADA DE VALORES
+          
+        
+        for(l=0; l<9; l++){//VERIF LINHA POR LINHA
+          for(ce=0; ce<8; ce++){//COMPARA ELEMENTO POR ELEMENTO
+            for(c=ce+1; c<9; c++){
+              if(sudoku[l][ce]==sudoku[l][c]){
+                count=1;
+              }
+            }
+          }
+        }//FIM VERIF LINHA
+
+        for(c=0; c<9; c++){//VERIF COLUN POR COLUN
+          for(le=0; le<8; le++){
+            for(l=le+1; l<9; l++){
+              if(sudoku[le][c]==sudoku[l][c]){
+                count=1;
+              }
+            }
+          }
+        }//FIM VERIF COLUN
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+        
+        
+        //FIM DA MATRIZ
+        printf("Instancia %d\n", inst);
+        if(inst==1){
+            printf("SIM\n\n");
+        }else{
+            printf("NAO\n\n");
+        }
+    }
+    
+    return 0;
+}
