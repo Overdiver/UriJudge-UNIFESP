@@ -1,0 +1,104 @@
+#include <stdio.h>
+ 
+int main() {
+ 
+    int sudoku[9][9];
+    int n=0, i=0, c=0, j=0, l=0, ce=0, le=0, quad=1;
+    
+    
+    scanf("%d", &n);
+    int count[n];
+    
+
+    for(i=0; i<n; i++){//LÊ N MATRIZES
+    count[i]=0;
+    
+        for(j=0;j<9;j++){//ENTRADA DE VALORES
+            if(j<8){
+               scanf("%d %d %d %d %d %d %d %d %d\n", &sudoku[j][0], &sudoku[j][1], &sudoku[j][2], &sudoku[j][3], &sudoku[j][4], &sudoku[j][5], &sudoku[j][6], &sudoku[j][7], &sudoku[j][8]);
+            }else{
+                scanf("%d %d %d %d %d %d %d %d %d", &sudoku[j][0], &sudoku[j][1], &sudoku[j][2], &sudoku[j][3], &sudoku[j][4], &sudoku[j][5], &sudoku[j][6], &sudoku[j][7], &sudoku[j][8]);
+            }
+        }//FIM DA ENTRADA DE VALORES
+          
+        for(l=0; l<9; l++){//VERIF LINHA POR LINHA
+          for(ce=0; ce<8; ce++){//COMPARA ELEMENTO POR ELEMENTO
+            for(c=ce+1; c<9; c++){
+              if(sudoku[l][ce]==sudoku[l][c]){
+                count[i]=1;
+              }else{
+                if(sudoku[l][ce]>9||sudoku[l][ce]<0){
+                  count[i]=5;
+                }
+                if(sudoku[l][8]>9||sudoku[l][8]<0){
+                  count[i]=5;
+                }
+              }
+            }
+          }
+        }//FIM VERIF LINHA
+        
+        if(count[i]==5){//Pula o loop caso tenha encontrado um valor inválido.
+          continue;
+        }
+
+        for(c=0; c<9; c++){//VERIF COLUN POR COLUN
+          for(le=0; le<8; le++){
+            for(l=le+1; l<9; l++){
+              if(sudoku[le][c]==sudoku[l][c]){
+                count[i]=1;
+              }
+            }
+          }
+        }//FIM VERIF COLUN
+
+        for(quad=1; quad<10; quad++){//VERIF 9 QUADRADOS 3X3 
+         int limiteli=0, limitelf=3, limiteci=0, limitecf=3, auxcol=0;//DEFININDO O LIMITE DE CADA QUADRADO
+          if(quad==4||quad==7){
+            limiteci=0;
+            limitecf=3;
+            limiteli=limiteli+3;
+            limitelf=limitelf+3;
+          }else{
+            limiteci=limiteci+3;
+            limitecf=limitecf+3;
+          }
+
+          //PARTE DELICADA
+          for(le=limiteli; le<limitelf; le++){//ELEMENTO L
+            for(ce=limiteci; ce<limitecf; ce++){//ELEMENTO C
+              auxcol=ce;
+              for(l=limiteli; l<limitelf; l++){//VERF LINHA
+                if(ce==limitelf-1){
+                  auxcol=0;
+                }
+                for(c=auxcol+1; c<limitecf; c++){//VERIFIC COLUNA
+                  if(sudoku[le][ce]==sudoku[l][c]){//COMPARAÇÃO ENTRE ELEMENTOS DO QUADRADO
+                    count[i]=1;
+                  }
+                }
+              }
+            }
+          }
+        }//FIM VERIF QUAD
+
+        //FIM DA MATRIZ
+        
+    }
+
+    //Verifica se valor inválido foi inserido
+      for(i=0; i<n; i++){
+      printf("Instancia %d\n", i+1);
+        if(count[i]==0){
+            printf("SIM\n\n");
+        }
+        if(count[i]==1){
+            printf("NAO\n\n");
+        }
+        if(count[i]==5){
+          printf("Valor inválido inserido.\n\n");
+        }
+      }
+    
+    return 0;
+}
